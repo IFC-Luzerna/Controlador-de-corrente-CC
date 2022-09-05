@@ -1,0 +1,1629 @@
+
+ControleCargaMotor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000bb6  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000002  00800060  00000bb6  00000c4a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000021d  00800062  00800062  00000c4c  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000c4c  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c7c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000a8  00000000  00000000  00000cb8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000ff3  00000000  00000000  00000d60  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000007b3  00000000  00000000  00001d53  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000b4a  00000000  00000000  00002506  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000028c  00000000  00000000  00003050  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000056e  00000000  00000000  000032dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000e65  00000000  00000000  0000384a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000120  00000000  00000000  000046af  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	2c c0       	rjmp	.+88     	; 0x5c <__bad_interrupt>
+   4:	2b c0       	rjmp	.+86     	; 0x5c <__bad_interrupt>
+   6:	34 c3       	rjmp	.+1640   	; 0x670 <__vector_3>
+   8:	29 c0       	rjmp	.+82     	; 0x5c <__bad_interrupt>
+   a:	28 c0       	rjmp	.+80     	; 0x5c <__bad_interrupt>
+   c:	27 c0       	rjmp	.+78     	; 0x5c <__bad_interrupt>
+   e:	26 c0       	rjmp	.+76     	; 0x5c <__bad_interrupt>
+  10:	25 c0       	rjmp	.+74     	; 0x5c <__bad_interrupt>
+  12:	24 c0       	rjmp	.+72     	; 0x5c <__bad_interrupt>
+  14:	23 c0       	rjmp	.+70     	; 0x5c <__bad_interrupt>
+  16:	4a c2       	rjmp	.+1172   	; 0x4ac <__vector_11>
+  18:	f7 c2       	rjmp	.+1518   	; 0x608 <__vector_12>
+  1a:	cf c2       	rjmp	.+1438   	; 0x5ba <__vector_13>
+  1c:	8f c3       	rjmp	.+1822   	; 0x73c <__vector_14>
+  1e:	1e c0       	rjmp	.+60     	; 0x5c <__bad_interrupt>
+  20:	1d c0       	rjmp	.+58     	; 0x5c <__bad_interrupt>
+  22:	1c c0       	rjmp	.+56     	; 0x5c <__bad_interrupt>
+  24:	1b c0       	rjmp	.+54     	; 0x5c <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+
+00000032 <__do_copy_data>:
+  32:	10 e0       	ldi	r17, 0x00	; 0
+  34:	a0 e6       	ldi	r26, 0x60	; 96
+  36:	b0 e0       	ldi	r27, 0x00	; 0
+  38:	e6 eb       	ldi	r30, 0xB6	; 182
+  3a:	fb e0       	ldi	r31, 0x0B	; 11
+  3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
+  3e:	05 90       	lpm	r0, Z+
+  40:	0d 92       	st	X+, r0
+  42:	a2 36       	cpi	r26, 0x62	; 98
+  44:	b1 07       	cpc	r27, r17
+  46:	d9 f7       	brne	.-10     	; 0x3e <__SP_H__>
+
+00000048 <__do_clear_bss>:
+  48:	22 e0       	ldi	r18, 0x02	; 2
+  4a:	a2 e6       	ldi	r26, 0x62	; 98
+  4c:	b0 e0       	ldi	r27, 0x00	; 0
+  4e:	01 c0       	rjmp	.+2      	; 0x52 <.do_clear_bss_start>
+
+00000050 <.do_clear_bss_loop>:
+  50:	1d 92       	st	X+, r1
+
+00000052 <.do_clear_bss_start>:
+  52:	af 37       	cpi	r26, 0x7F	; 127
+  54:	b2 07       	cpc	r27, r18
+  56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
+  58:	69 d4       	rcall	.+2258   	; 0x92c <main>
+  5a:	ab c5       	rjmp	.+2902   	; 0xbb2 <_exit>
+
+0000005c <__bad_interrupt>:
+  5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
+
+0000005e <CRC16>:
+	} else if (pi->controlSignal < 0) {
+		pi->controlSignal = 0;
+	}
+
+	return (uint16_t)(pi->controlSignal/1000);
+}
+  5e:	cf 93       	push	r28
+  60:	df 93       	push	r29
+  62:	61 15       	cp	r22, r1
+  64:	71 05       	cpc	r23, r1
+  66:	39 f1       	breq	.+78     	; 0xb6 <CRC16+0x58>
+  68:	dc 01       	movw	r26, r24
+  6a:	68 0f       	add	r22, r24
+  6c:	79 1f       	adc	r23, r25
+  6e:	8f ef       	ldi	r24, 0xFF	; 255
+  70:	9f ef       	ldi	r25, 0xFF	; 255
+  72:	2d 91       	ld	r18, X+
+  74:	c9 2f       	mov	r28, r25
+  76:	dd 27       	eor	r29, r29
+  78:	82 27       	eor	r24, r18
+  7a:	ac 01       	movw	r20, r24
+  7c:	55 27       	eor	r21, r21
+  7e:	28 e0       	ldi	r18, 0x08	; 8
+  80:	30 e0       	ldi	r19, 0x00	; 0
+  82:	80 e0       	ldi	r24, 0x00	; 0
+  84:	90 e0       	ldi	r25, 0x00	; 0
+  86:	fc 01       	movw	r30, r24
+  88:	e4 27       	eor	r30, r20
+  8a:	f5 27       	eor	r31, r21
+  8c:	96 95       	lsr	r25
+  8e:	87 95       	ror	r24
+  90:	e0 ff       	sbrs	r30, 0
+  92:	04 c0       	rjmp	.+8      	; 0x9c <CRC16+0x3e>
+  94:	e1 e0       	ldi	r30, 0x01	; 1
+  96:	8e 27       	eor	r24, r30
+  98:	e0 ea       	ldi	r30, 0xA0	; 160
+  9a:	9e 27       	eor	r25, r30
+  9c:	56 95       	lsr	r21
+  9e:	47 95       	ror	r20
+  a0:	21 50       	subi	r18, 0x01	; 1
+  a2:	31 09       	sbc	r19, r1
+  a4:	81 f7       	brne	.-32     	; 0x86 <CRC16+0x28>
+  a6:	8c 27       	eor	r24, r28
+  a8:	9d 27       	eor	r25, r29
+  aa:	a6 17       	cp	r26, r22
+  ac:	b7 07       	cpc	r27, r23
+  ae:	09 f7       	brne	.-62     	; 0x72 <CRC16+0x14>
+  b0:	df 91       	pop	r29
+  b2:	cf 91       	pop	r28
+  b4:	08 95       	ret
+  b6:	8f ef       	ldi	r24, 0xFF	; 255
+  b8:	9f ef       	ldi	r25, 0xFF	; 255
+  ba:	fa cf       	rjmp	.-12     	; 0xb0 <CRC16+0x52>
+
+000000bc <ModBusDefineFunction>:
+  bc:	83 30       	cpi	r24, 0x03	; 3
+  be:	71 f0       	breq	.+28     	; 0xdc <ModBusDefineFunction+0x20>
+  c0:	86 30       	cpi	r24, 0x06	; 6
+  c2:	61 f0       	breq	.+24     	; 0xdc <ModBusDefineFunction+0x20>
+  c4:	80 31       	cpi	r24, 0x10	; 16
+  c6:	99 f0       	breq	.+38     	; 0xee <ModBusDefineFunction+0x32>
+  c8:	83 e0       	ldi	r24, 0x03	; 3
+  ca:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+  ce:	8f ef       	ldi	r24, 0xFF	; 255
+  d0:	90 e0       	ldi	r25, 0x00	; 0
+  d2:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <ModBus+0x3>
+  d6:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <ModBus+0x2>
+  da:	08 95       	ret
+  dc:	27 e0       	ldi	r18, 0x07	; 7
+  de:	30 e0       	ldi	r19, 0x00	; 0
+  e0:	30 93 6d 00 	sts	0x006D, r19	; 0x80006d <ModBus+0x3>
+  e4:	20 93 6c 00 	sts	0x006C, r18	; 0x80006c <ModBus+0x2>
+  e8:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <ModBus+0x204>
+  ec:	08 95       	ret
+  ee:	20 91 74 00 	lds	r18, 0x0074	; 0x800074 <ModBus+0xa>
+  f2:	30 91 75 00 	lds	r19, 0x0075	; 0x800075 <ModBus+0xb>
+  f6:	32 27       	eor	r19, r18
+  f8:	23 27       	eor	r18, r19
+  fa:	32 27       	eor	r19, r18
+  fc:	2c 5f       	subi	r18, 0xFC	; 252
+  fe:	3f 4f       	sbci	r19, 0xFF	; 255
+ 100:	22 0f       	add	r18, r18
+ 102:	33 1f       	adc	r19, r19
+ 104:	30 93 6d 00 	sts	0x006D, r19	; 0x80006d <ModBus+0x3>
+ 108:	20 93 6c 00 	sts	0x006C, r18	; 0x80006c <ModBus+0x2>
+ 10c:	80 93 6e 02 	sts	0x026E, r24	; 0x80026e <ModBus+0x204>
+ 110:	08 95       	ret
+
+00000112 <ModBusSendErrorMessage>:
+ 112:	cf 93       	push	r28
+ 114:	df 93       	push	r29
+ 116:	ca e6       	ldi	r28, 0x6A	; 106
+ 118:	d0 e0       	ldi	r29, 0x00	; 0
+ 11a:	99 81       	ldd	r25, Y+1	; 0x01
+ 11c:	90 93 6f 01 	sts	0x016F, r25	; 0x80016f <ModBus+0x105>
+ 120:	80 68       	ori	r24, 0x80	; 128
+ 122:	80 93 70 01 	sts	0x0170, r24	; 0x800170 <ModBus+0x106>
+ 126:	60 93 71 01 	sts	0x0171, r22	; 0x800171 <ModBus+0x107>
+ 12a:	63 e0       	ldi	r22, 0x03	; 3
+ 12c:	70 e0       	ldi	r23, 0x00	; 0
+ 12e:	8f e6       	ldi	r24, 0x6F	; 111
+ 130:	91 e0       	ldi	r25, 0x01	; 1
+ 132:	95 df       	rcall	.-214    	; 0x5e <CRC16>
+ 134:	80 93 72 01 	sts	0x0172, r24	; 0x800172 <ModBus+0x108>
+ 138:	90 93 73 01 	sts	0x0173, r25	; 0x800173 <ModBus+0x109>
+ 13c:	85 e0       	ldi	r24, 0x05	; 5
+ 13e:	90 e0       	ldi	r25, 0x00	; 0
+ 140:	9d 83       	std	Y+5, r25	; 0x05
+ 142:	8c 83       	std	Y+4, r24	; 0x04
+ 144:	84 e0       	ldi	r24, 0x04	; 4
+ 146:	88 83       	st	Y, r24
+ 148:	f8 94       	cli
+ 14a:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 14e:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 152:	24 e6       	ldi	r18, 0x64	; 100
+ 154:	30 e0       	ldi	r19, 0x00	; 0
+ 156:	30 93 69 00 	sts	0x0069, r19	; 0x800069 <ModBusTimerInterval+0x1>
+ 15a:	20 93 68 00 	sts	0x0068, r18	; 0x800068 <ModBusTimerInterval>
+ 15e:	9a ef       	ldi	r25, 0xFA	; 250
+ 160:	93 bd       	out	0x23, r25	; 35
+ 162:	14 bc       	out	0x24, r1	; 36
+ 164:	85 bd       	out	0x25, r24	; 37
+ 166:	89 b7       	in	r24, 0x39	; 57
+ 168:	80 68       	ori	r24, 0x80	; 128
+ 16a:	89 bf       	out	0x39, r24	; 57
+ 16c:	78 94       	sei
+ 16e:	df 91       	pop	r29
+ 170:	cf 91       	pop	r28
+ 172:	08 95       	ret
+
+00000174 <ModBusProcess>:
+ 174:	ef 92       	push	r14
+ 176:	ff 92       	push	r15
+ 178:	0f 93       	push	r16
+ 17a:	1f 93       	push	r17
+ 17c:	cf 93       	push	r28
+ 17e:	df 93       	push	r29
+ 180:	00 91 6c 00 	lds	r16, 0x006C	; 0x80006c <ModBus+0x2>
+ 184:	10 91 6d 00 	lds	r17, 0x006D	; 0x80006d <ModBus+0x3>
+ 188:	e8 01       	movw	r28, r16
+ 18a:	21 97       	sbiw	r28, 0x01	; 1
+ 18c:	be 01       	movw	r22, r28
+ 18e:	80 e7       	ldi	r24, 0x70	; 112
+ 190:	90 e0       	ldi	r25, 0x00	; 0
+ 192:	65 df       	rcall	.-310    	; 0x5e <CRC16>
+ 194:	ac 01       	movw	r20, r24
+ 196:	55 27       	eor	r21, r21
+ 198:	c6 59       	subi	r28, 0x96	; 150
+ 19a:	df 4f       	sbci	r29, 0xFF	; 255
+ 19c:	2e 81       	ldd	r18, Y+6	; 0x06
+ 19e:	30 e0       	ldi	r19, 0x00	; 0
+ 1a0:	42 17       	cp	r20, r18
+ 1a2:	53 07       	cpc	r21, r19
+ 1a4:	d9 f0       	breq	.+54     	; 0x1dc <ModBusProcess+0x68>
+ 1a6:	92 98       	cbi	0x12, 2	; 18
+ 1a8:	86 e0       	ldi	r24, 0x06	; 6
+ 1aa:	90 e0       	ldi	r25, 0x00	; 0
+ 1ac:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <ModBus+0x3>
+ 1b0:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <ModBus+0x2>
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+ 1b6:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <ModBus+0x1>
+ 1ba:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <ModBus>
+ 1be:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <ModBus+0x20c>
+ 1c2:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <ModBus+0x20b>
+ 1c6:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <ModBus+0x20e>
+ 1ca:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <ModBus+0x20d>
+ 1ce:	df 91       	pop	r29
+ 1d0:	cf 91       	pop	r28
+ 1d2:	1f 91       	pop	r17
+ 1d4:	0f 91       	pop	r16
+ 1d6:	ff 90       	pop	r15
+ 1d8:	ef 90       	pop	r14
+ 1da:	08 95       	ret
+ 1dc:	89 2f       	mov	r24, r25
+ 1de:	99 27       	eor	r25, r25
+ 1e0:	f8 01       	movw	r30, r16
+ 1e2:	e6 59       	subi	r30, 0x96	; 150
+ 1e4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1e6:	26 81       	ldd	r18, Z+6	; 0x06
+ 1e8:	30 e0       	ldi	r19, 0x00	; 0
+ 1ea:	82 17       	cp	r24, r18
+ 1ec:	93 07       	cpc	r25, r19
+ 1ee:	d9 f6       	brne	.-74     	; 0x1a6 <ModBusProcess+0x32>
+ 1f0:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <ModBus+0x204>
+ 1f4:	83 30       	cpi	r24, 0x03	; 3
+ 1f6:	09 f4       	brne	.+2      	; 0x1fa <ModBusProcess+0x86>
+ 1f8:	c8 c0       	rjmp	.+400    	; 0x38a <__EEPROM_REGION_LENGTH__+0x18a>
+ 1fa:	86 30       	cpi	r24, 0x06	; 6
+ 1fc:	09 f4       	brne	.+2      	; 0x200 <__EEPROM_REGION_LENGTH__>
+ 1fe:	6e c0       	rjmp	.+220    	; 0x2dc <__EEPROM_REGION_LENGTH__+0xdc>
+ 200:	80 31       	cpi	r24, 0x10	; 16
+ 202:	29 f7       	brne	.-54     	; 0x1ce <ModBusProcess+0x5a>
+ 204:	a0 91 72 00 	lds	r26, 0x0072	; 0x800072 <ModBus+0x8>
+ 208:	b0 91 73 00 	lds	r27, 0x0073	; 0x800073 <ModBus+0x9>
+ 20c:	ba 27       	eor	r27, r26
+ 20e:	ab 27       	eor	r26, r27
+ 210:	ba 27       	eor	r27, r26
+ 212:	e0 91 72 00 	lds	r30, 0x0072	; 0x800072 <ModBus+0x8>
+ 216:	70 91 73 00 	lds	r23, 0x0073	; 0x800073 <ModBus+0x9>
+ 21a:	20 91 74 00 	lds	r18, 0x0074	; 0x800074 <ModBus+0xa>
+ 21e:	30 91 75 00 	lds	r19, 0x0075	; 0x800075 <ModBus+0xb>
+ 222:	32 27       	eor	r19, r18
+ 224:	23 27       	eor	r18, r19
+ 226:	32 27       	eor	r19, r18
+ 228:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <ModBus+0xa>
+ 22c:	90 91 75 00 	lds	r25, 0x0075	; 0x800075 <ModBus+0xb>
+ 230:	a9 01       	movw	r20, r18
+ 232:	4a 0f       	add	r20, r26
+ 234:	5b 1f       	adc	r21, r27
+ 236:	41 50       	subi	r20, 0x01	; 1
+ 238:	51 09       	sbc	r21, r1
+ 23a:	43 30       	cpi	r20, 0x03	; 3
+ 23c:	51 05       	cpc	r21, r1
+ 23e:	08 f0       	brcs	.+2      	; 0x242 <__EEPROM_REGION_LENGTH__+0x42>
+ 240:	24 c1       	rjmp	.+584    	; 0x48a <__stack+0x2b>
+ 242:	40 91 6b 00 	lds	r20, 0x006B	; 0x80006b <ModBus+0x1>
+ 246:	40 93 6f 01 	sts	0x016F, r20	; 0x80016f <ModBus+0x105>
+ 24a:	80 93 70 01 	sts	0x0170, r24	; 0x800170 <ModBus+0x106>
+ 24e:	e0 93 71 01 	sts	0x0171, r30	; 0x800171 <ModBus+0x107>
+ 252:	70 93 72 01 	sts	0x0172, r23	; 0x800172 <ModBus+0x108>
+ 256:	60 93 73 01 	sts	0x0173, r22	; 0x800173 <ModBus+0x109>
+ 25a:	90 93 74 01 	sts	0x0174, r25	; 0x800174 <ModBus+0x10a>
+ 25e:	21 15       	cp	r18, r1
+ 260:	31 05       	cpc	r19, r1
+ 262:	b1 f0       	breq	.+44     	; 0x290 <__EEPROM_REGION_LENGTH__+0x90>
+ 264:	ea e6       	ldi	r30, 0x6A	; 106
+ 266:	f0 e0       	ldi	r31, 0x00	; 0
+ 268:	aa 0f       	add	r26, r26
+ 26a:	bb 1f       	adc	r27, r27
+ 26c:	a1 59       	subi	r26, 0x91	; 145
+ 26e:	bd 4f       	sbci	r27, 0xFD	; 253
+ 270:	22 0f       	add	r18, r18
+ 272:	33 1f       	adc	r19, r19
+ 274:	26 59       	subi	r18, 0x96	; 150
+ 276:	3f 4f       	sbci	r19, 0xFF	; 255
+ 278:	85 85       	ldd	r24, Z+13	; 0x0d
+ 27a:	90 e0       	ldi	r25, 0x00	; 0
+ 27c:	98 2f       	mov	r25, r24
+ 27e:	88 27       	eor	r24, r24
+ 280:	46 85       	ldd	r20, Z+14	; 0x0e
+ 282:	84 2b       	or	r24, r20
+ 284:	8d 93       	st	X+, r24
+ 286:	9d 93       	st	X+, r25
+ 288:	32 96       	adiw	r30, 0x02	; 2
+ 28a:	e2 17       	cp	r30, r18
+ 28c:	f3 07       	cpc	r31, r19
+ 28e:	a1 f7       	brne	.-24     	; 0x278 <__EEPROM_REGION_LENGTH__+0x78>
+ 290:	66 e0       	ldi	r22, 0x06	; 6
+ 292:	70 e0       	ldi	r23, 0x00	; 0
+ 294:	8f e6       	ldi	r24, 0x6F	; 111
+ 296:	91 e0       	ldi	r25, 0x01	; 1
+ 298:	e2 de       	rcall	.-572    	; 0x5e <CRC16>
+ 29a:	80 93 75 01 	sts	0x0175, r24	; 0x800175 <ModBus+0x10b>
+ 29e:	90 93 76 01 	sts	0x0176, r25	; 0x800176 <ModBus+0x10c>
+ 2a2:	88 e0       	ldi	r24, 0x08	; 8
+ 2a4:	90 e0       	ldi	r25, 0x00	; 0
+ 2a6:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <ModBus+0x5>
+ 2aa:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <ModBus+0x4>
+ 2ae:	84 e0       	ldi	r24, 0x04	; 4
+ 2b0:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+ 2b4:	f8 94       	cli
+ 2b6:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 2ba:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 2be:	24 e6       	ldi	r18, 0x64	; 100
+ 2c0:	30 e0       	ldi	r19, 0x00	; 0
+ 2c2:	30 93 69 00 	sts	0x0069, r19	; 0x800069 <ModBusTimerInterval+0x1>
+ 2c6:	20 93 68 00 	sts	0x0068, r18	; 0x800068 <ModBusTimerInterval>
+ 2ca:	9a ef       	ldi	r25, 0xFA	; 250
+ 2cc:	93 bd       	out	0x23, r25	; 35
+ 2ce:	14 bc       	out	0x24, r1	; 36
+ 2d0:	85 bd       	out	0x25, r24	; 37
+ 2d2:	89 b7       	in	r24, 0x39	; 57
+ 2d4:	80 68       	ori	r24, 0x80	; 128
+ 2d6:	89 bf       	out	0x39, r24	; 57
+ 2d8:	78 94       	sei
+ 2da:	79 cf       	rjmp	.-270    	; 0x1ce <ModBusProcess+0x5a>
+ 2dc:	20 91 72 00 	lds	r18, 0x0072	; 0x800072 <ModBus+0x8>
+ 2e0:	30 91 73 00 	lds	r19, 0x0073	; 0x800073 <ModBus+0x9>
+ 2e4:	32 27       	eor	r19, r18
+ 2e6:	23 27       	eor	r18, r19
+ 2e8:	32 27       	eor	r19, r18
+ 2ea:	40 91 72 00 	lds	r20, 0x0072	; 0x800072 <ModBus+0x8>
+ 2ee:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <ModBus+0x9>
+ 2f2:	23 30       	cpi	r18, 0x03	; 3
+ 2f4:	31 05       	cpc	r19, r1
+ 2f6:	08 f0       	brcs	.+2      	; 0x2fa <__EEPROM_REGION_LENGTH__+0xfa>
+ 2f8:	c2 c0       	rjmp	.+388    	; 0x47e <__stack+0x1f>
+ 2fa:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <ModBus+0xa>
+ 2fe:	50 91 75 00 	lds	r21, 0x0075	; 0x800075 <ModBus+0xb>
+ 302:	22 0f       	add	r18, r18
+ 304:	33 1f       	adc	r19, r19
+ 306:	f9 01       	movw	r30, r18
+ 308:	e1 59       	subi	r30, 0x91	; 145
+ 30a:	fd 4f       	sbci	r31, 0xFD	; 253
+ 30c:	20 91 74 00 	lds	r18, 0x0074	; 0x800074 <ModBus+0xa>
+ 310:	30 91 75 00 	lds	r19, 0x0075	; 0x800075 <ModBus+0xb>
+ 314:	32 27       	eor	r19, r18
+ 316:	23 27       	eor	r18, r19
+ 318:	32 27       	eor	r19, r18
+ 31a:	31 83       	std	Z+1, r19	; 0x01
+ 31c:	20 83       	st	Z, r18
+ 31e:	20 91 6b 00 	lds	r18, 0x006B	; 0x80006b <ModBus+0x1>
+ 322:	20 93 6f 01 	sts	0x016F, r18	; 0x80016f <ModBus+0x105>
+ 326:	80 93 70 01 	sts	0x0170, r24	; 0x800170 <ModBus+0x106>
+ 32a:	40 93 71 01 	sts	0x0171, r20	; 0x800171 <ModBus+0x107>
+ 32e:	90 93 72 01 	sts	0x0172, r25	; 0x800172 <ModBus+0x108>
+ 332:	60 93 73 01 	sts	0x0173, r22	; 0x800173 <ModBus+0x109>
+ 336:	50 93 74 01 	sts	0x0174, r21	; 0x800174 <ModBus+0x10a>
+ 33a:	66 e0       	ldi	r22, 0x06	; 6
+ 33c:	70 e0       	ldi	r23, 0x00	; 0
+ 33e:	8f e6       	ldi	r24, 0x6F	; 111
+ 340:	91 e0       	ldi	r25, 0x01	; 1
+ 342:	8d de       	rcall	.-742    	; 0x5e <CRC16>
+ 344:	80 93 75 01 	sts	0x0175, r24	; 0x800175 <ModBus+0x10b>
+ 348:	90 93 76 01 	sts	0x0176, r25	; 0x800176 <ModBus+0x10c>
+ 34c:	88 e0       	ldi	r24, 0x08	; 8
+ 34e:	90 e0       	ldi	r25, 0x00	; 0
+ 350:	90 93 6f 00 	sts	0x006F, r25	; 0x80006f <ModBus+0x5>
+ 354:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <ModBus+0x4>
+ 358:	84 e0       	ldi	r24, 0x04	; 4
+ 35a:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+ 35e:	f8 94       	cli
+ 360:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 364:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 368:	24 e6       	ldi	r18, 0x64	; 100
+ 36a:	30 e0       	ldi	r19, 0x00	; 0
+ 36c:	30 93 69 00 	sts	0x0069, r19	; 0x800069 <ModBusTimerInterval+0x1>
+ 370:	20 93 68 00 	sts	0x0068, r18	; 0x800068 <ModBusTimerInterval>
+ 374:	9a ef       	ldi	r25, 0xFA	; 250
+ 376:	93 bd       	out	0x23, r25	; 35
+ 378:	14 bc       	out	0x24, r1	; 36
+ 37a:	85 bd       	out	0x25, r24	; 37
+ 37c:	89 b7       	in	r24, 0x39	; 57
+ 37e:	80 68       	ori	r24, 0x80	; 128
+ 380:	89 bf       	out	0x39, r24	; 57
+ 382:	78 94       	sei
+ 384:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <ModBus+0x204>
+ 388:	3b cf       	rjmp	.-394    	; 0x200 <__EEPROM_REGION_LENGTH__>
+ 38a:	e0 91 72 00 	lds	r30, 0x0072	; 0x800072 <ModBus+0x8>
+ 38e:	f0 91 73 00 	lds	r31, 0x0073	; 0x800073 <ModBus+0x9>
+ 392:	fe 27       	eor	r31, r30
+ 394:	ef 27       	eor	r30, r31
+ 396:	fe 27       	eor	r31, r30
+ 398:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <ModBus+0xa>
+ 39c:	70 91 75 00 	lds	r23, 0x0075	; 0x800075 <ModBus+0xb>
+ 3a0:	76 27       	eor	r23, r22
+ 3a2:	67 27       	eor	r22, r23
+ 3a4:	76 27       	eor	r23, r22
+ 3a6:	9f 01       	movw	r18, r30
+ 3a8:	26 0f       	add	r18, r22
+ 3aa:	37 1f       	adc	r19, r23
+ 3ac:	21 50       	subi	r18, 0x01	; 1
+ 3ae:	31 09       	sbc	r19, r1
+ 3b0:	23 30       	cpi	r18, 0x03	; 3
+ 3b2:	31 05       	cpc	r19, r1
+ 3b4:	08 f0       	brcs	.+2      	; 0x3b8 <__EEPROM_REGION_LENGTH__+0x1b8>
+ 3b6:	5d c0       	rjmp	.+186    	; 0x472 <__stack+0x13>
+ 3b8:	90 91 6b 00 	lds	r25, 0x006B	; 0x80006b <ModBus+0x1>
+ 3bc:	90 93 6f 01 	sts	0x016F, r25	; 0x80016f <ModBus+0x105>
+ 3c0:	80 93 70 01 	sts	0x0170, r24	; 0x800170 <ModBus+0x106>
+ 3c4:	86 2f       	mov	r24, r22
+ 3c6:	88 0f       	add	r24, r24
+ 3c8:	80 93 71 01 	sts	0x0171, r24	; 0x800171 <ModBus+0x107>
+ 3cc:	61 15       	cp	r22, r1
+ 3ce:	71 05       	cpc	r23, r1
+ 3d0:	09 f4       	brne	.+2      	; 0x3d4 <__EEPROM_REGION_LENGTH__+0x1d4>
+ 3d2:	64 c0       	rjmp	.+200    	; 0x49c <__stack+0x3d>
+ 3d4:	ee 0f       	add	r30, r30
+ 3d6:	ff 1f       	adc	r31, r31
+ 3d8:	e1 59       	subi	r30, 0x91	; 145
+ 3da:	fd 4f       	sbci	r31, 0xFD	; 253
+ 3dc:	a2 e7       	ldi	r26, 0x72	; 114
+ 3de:	b1 e0       	ldi	r27, 0x01	; 1
+ 3e0:	eb 01       	movw	r28, r22
+ 3e2:	cc 57       	subi	r28, 0x7C	; 124
+ 3e4:	df 4f       	sbci	r29, 0xFF	; 255
+ 3e6:	cc 0f       	add	r28, r28
+ 3e8:	dd 1f       	adc	r29, r29
+ 3ea:	9e 01       	movw	r18, r28
+ 3ec:	26 59       	subi	r18, 0x96	; 150
+ 3ee:	3f 4f       	sbci	r19, 0xFF	; 255
+ 3f0:	80 81       	ld	r24, Z
+ 3f2:	91 81       	ldd	r25, Z+1	; 0x01
+ 3f4:	32 96       	adiw	r30, 0x02	; 2
+ 3f6:	9c 93       	st	X, r25
+ 3f8:	11 96       	adiw	r26, 0x01	; 1
+ 3fa:	8c 93       	st	X, r24
+ 3fc:	11 97       	sbiw	r26, 0x01	; 1
+ 3fe:	12 96       	adiw	r26, 0x02	; 2
+ 400:	2a 17       	cp	r18, r26
+ 402:	3b 07       	cpc	r19, r27
+ 404:	a9 f7       	brne	.-22     	; 0x3f0 <__EEPROM_REGION_LENGTH__+0x1f0>
+ 406:	7e 01       	movw	r14, r28
+ 408:	85 e0       	ldi	r24, 0x05	; 5
+ 40a:	e8 1a       	sub	r14, r24
+ 40c:	81 e0       	ldi	r24, 0x01	; 1
+ 40e:	f8 0a       	sbc	r15, r24
+ 410:	8e 01       	movw	r16, r28
+ 412:	04 50       	subi	r16, 0x04	; 4
+ 414:	11 40       	sbci	r17, 0x01	; 1
+ 416:	c3 50       	subi	r28, 0x03	; 3
+ 418:	d1 40       	sbci	r29, 0x01	; 1
+ 41a:	66 0f       	add	r22, r22
+ 41c:	77 1f       	adc	r23, r23
+ 41e:	6d 5f       	subi	r22, 0xFD	; 253
+ 420:	7f 4f       	sbci	r23, 0xFF	; 255
+ 422:	8f e6       	ldi	r24, 0x6F	; 111
+ 424:	91 e0       	ldi	r25, 0x01	; 1
+ 426:	1b de       	rcall	.-970    	; 0x5e <CRC16>
+ 428:	f7 01       	movw	r30, r14
+ 42a:	e1 59       	subi	r30, 0x91	; 145
+ 42c:	fe 4f       	sbci	r31, 0xFE	; 254
+ 42e:	80 83       	st	Z, r24
+ 430:	f8 01       	movw	r30, r16
+ 432:	e1 59       	subi	r30, 0x91	; 145
+ 434:	fe 4f       	sbci	r31, 0xFE	; 254
+ 436:	90 83       	st	Z, r25
+ 438:	d0 93 6f 00 	sts	0x006F, r29	; 0x80006f <ModBus+0x5>
+ 43c:	c0 93 6e 00 	sts	0x006E, r28	; 0x80006e <ModBus+0x4>
+ 440:	84 e0       	ldi	r24, 0x04	; 4
+ 442:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+ 446:	f8 94       	cli
+ 448:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 44c:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 450:	24 e6       	ldi	r18, 0x64	; 100
+ 452:	30 e0       	ldi	r19, 0x00	; 0
+ 454:	30 93 69 00 	sts	0x0069, r19	; 0x800069 <ModBusTimerInterval+0x1>
+ 458:	20 93 68 00 	sts	0x0068, r18	; 0x800068 <ModBusTimerInterval>
+ 45c:	9a ef       	ldi	r25, 0xFA	; 250
+ 45e:	93 bd       	out	0x23, r25	; 35
+ 460:	14 bc       	out	0x24, r1	; 36
+ 462:	85 bd       	out	0x25, r24	; 37
+ 464:	89 b7       	in	r24, 0x39	; 57
+ 466:	80 68       	ori	r24, 0x80	; 128
+ 468:	89 bf       	out	0x39, r24	; 57
+ 46a:	78 94       	sei
+ 46c:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <ModBus+0x204>
+ 470:	c4 ce       	rjmp	.-632    	; 0x1fa <ModBusProcess+0x86>
+ 472:	62 e0       	ldi	r22, 0x02	; 2
+ 474:	83 e0       	ldi	r24, 0x03	; 3
+ 476:	4d de       	rcall	.-870    	; 0x112 <ModBusSendErrorMessage>
+ 478:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <ModBus+0x204>
+ 47c:	be ce       	rjmp	.-644    	; 0x1fa <ModBusProcess+0x86>
+ 47e:	62 e0       	ldi	r22, 0x02	; 2
+ 480:	86 e0       	ldi	r24, 0x06	; 6
+ 482:	47 de       	rcall	.-882    	; 0x112 <ModBusSendErrorMessage>
+ 484:	80 91 6e 02 	lds	r24, 0x026E	; 0x80026e <ModBus+0x204>
+ 488:	bb ce       	rjmp	.-650    	; 0x200 <__EEPROM_REGION_LENGTH__>
+ 48a:	62 e0       	ldi	r22, 0x02	; 2
+ 48c:	80 e1       	ldi	r24, 0x10	; 16
+ 48e:	df 91       	pop	r29
+ 490:	cf 91       	pop	r28
+ 492:	1f 91       	pop	r17
+ 494:	0f 91       	pop	r16
+ 496:	ff 90       	pop	r15
+ 498:	ef 90       	pop	r14
+ 49a:	3b ce       	rjmp	.-906    	; 0x112 <ModBusSendErrorMessage>
+ 49c:	c5 e0       	ldi	r28, 0x05	; 5
+ 49e:	d0 e0       	ldi	r29, 0x00	; 0
+ 4a0:	04 e0       	ldi	r16, 0x04	; 4
+ 4a2:	10 e0       	ldi	r17, 0x00	; 0
+ 4a4:	f3 e0       	ldi	r31, 0x03	; 3
+ 4a6:	ef 2e       	mov	r14, r31
+ 4a8:	f1 2c       	mov	r15, r1
+ 4aa:	b7 cf       	rjmp	.-146    	; 0x41a <__DATA_REGION_LENGTH__+0x1a>
+
+000004ac <__vector_11>:
+ 4ac:	1f 92       	push	r1
+ 4ae:	0f 92       	push	r0
+ 4b0:	0f b6       	in	r0, 0x3f	; 63
+ 4b2:	0f 92       	push	r0
+ 4b4:	11 24       	eor	r1, r1
+ 4b6:	2f 93       	push	r18
+ 4b8:	3f 93       	push	r19
+ 4ba:	4f 93       	push	r20
+ 4bc:	5f 93       	push	r21
+ 4be:	6f 93       	push	r22
+ 4c0:	7f 93       	push	r23
+ 4c2:	8f 93       	push	r24
+ 4c4:	9f 93       	push	r25
+ 4c6:	af 93       	push	r26
+ 4c8:	bf 93       	push	r27
+ 4ca:	ef 93       	push	r30
+ 4cc:	ff 93       	push	r31
+ 4ce:	f8 94       	cli
+ 4d0:	2c b1       	in	r18, 0x0c	; 12
+ 4d2:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <ModBus+0x20b>
+ 4d6:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <ModBus+0x20c>
+ 4da:	fc 01       	movw	r30, r24
+ 4dc:	e6 59       	subi	r30, 0x96	; 150
+ 4de:	ff 4f       	sbci	r31, 0xFF	; 255
+ 4e0:	26 83       	std	Z+6, r18	; 0x06
+ 4e2:	14 bc       	out	0x24, r1	; 36
+ 4e4:	20 91 6a 00 	lds	r18, 0x006A	; 0x80006a <ModBus>
+ 4e8:	21 11       	cpse	r18, r1
+ 4ea:	47 c0       	rjmp	.+142    	; 0x57a <__vector_11+0xce>
+ 4ec:	00 97       	sbiw	r24, 0x00	; 0
+ 4ee:	e1 f4       	brne	.+56     	; 0x528 <__vector_11+0x7c>
+ 4f0:	f8 94       	cli
+ 4f2:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 4f6:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 4fa:	81 e0       	ldi	r24, 0x01	; 1
+ 4fc:	90 e0       	ldi	r25, 0x00	; 0
+ 4fe:	90 93 69 00 	sts	0x0069, r25	; 0x800069 <ModBusTimerInterval+0x1>
+ 502:	80 93 68 00 	sts	0x0068, r24	; 0x800068 <ModBusTimerInterval>
+ 506:	8a ef       	ldi	r24, 0xFA	; 250
+ 508:	83 bd       	out	0x23, r24	; 35
+ 50a:	14 bc       	out	0x24, r1	; 36
+ 50c:	84 e0       	ldi	r24, 0x04	; 4
+ 50e:	85 bd       	out	0x25, r24	; 37
+ 510:	89 b7       	in	r24, 0x39	; 57
+ 512:	80 68       	ori	r24, 0x80	; 128
+ 514:	89 bf       	out	0x39, r24	; 57
+ 516:	78 94       	sei
+ 518:	20 91 6a 00 	lds	r18, 0x006A	; 0x80006a <ModBus>
+ 51c:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <ModBus+0x20b>
+ 520:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <ModBus+0x20c>
+ 524:	21 11       	cpse	r18, r1
+ 526:	29 c0       	rjmp	.+82     	; 0x57a <__vector_11+0xce>
+ 528:	86 30       	cpi	r24, 0x06	; 6
+ 52a:	91 05       	cpc	r25, r1
+ 52c:	a1 f1       	breq	.+104    	; 0x596 <__vector_11+0xea>
+ 52e:	8f 3f       	cpi	r24, 0xFF	; 255
+ 530:	91 05       	cpc	r25, r1
+ 532:	28 f4       	brcc	.+10     	; 0x53e <__vector_11+0x92>
+ 534:	01 96       	adiw	r24, 0x01	; 1
+ 536:	90 93 76 02 	sts	0x0276, r25	; 0x800276 <ModBus+0x20c>
+ 53a:	80 93 75 02 	sts	0x0275, r24	; 0x800275 <ModBus+0x20b>
+ 53e:	78 94       	sei
+ 540:	ff 91       	pop	r31
+ 542:	ef 91       	pop	r30
+ 544:	bf 91       	pop	r27
+ 546:	af 91       	pop	r26
+ 548:	9f 91       	pop	r25
+ 54a:	8f 91       	pop	r24
+ 54c:	7f 91       	pop	r23
+ 54e:	6f 91       	pop	r22
+ 550:	5f 91       	pop	r21
+ 552:	4f 91       	pop	r20
+ 554:	3f 91       	pop	r19
+ 556:	2f 91       	pop	r18
+ 558:	0f 90       	pop	r0
+ 55a:	0f be       	out	0x3f, r0	; 63
+ 55c:	0f 90       	pop	r0
+ 55e:	1f 90       	pop	r1
+ 560:	18 95       	reti
+ 562:	81 e0       	ldi	r24, 0x01	; 1
+ 564:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+ 568:	80 91 71 00 	lds	r24, 0x0071	; 0x800071 <ModBus+0x7>
+ 56c:	a7 dd       	rcall	.-1202   	; 0xbc <ModBusDefineFunction>
+ 56e:	20 91 6a 00 	lds	r18, 0x006A	; 0x80006a <ModBus>
+ 572:	80 91 75 02 	lds	r24, 0x0275	; 0x800275 <ModBus+0x20b>
+ 576:	90 91 76 02 	lds	r25, 0x0276	; 0x800276 <ModBus+0x20c>
+ 57a:	21 30       	cpi	r18, 0x01	; 1
+ 57c:	c1 f6       	brne	.-80     	; 0x52e <__vector_11+0x82>
+ 57e:	20 91 6c 00 	lds	r18, 0x006C	; 0x80006c <ModBus+0x2>
+ 582:	30 91 6d 00 	lds	r19, 0x006D	; 0x80006d <ModBus+0x3>
+ 586:	82 17       	cp	r24, r18
+ 588:	93 07       	cpc	r25, r19
+ 58a:	89 f6       	brne	.-94     	; 0x52e <__vector_11+0x82>
+ 58c:	15 bc       	out	0x25, r1	; 37
+ 58e:	22 e0       	ldi	r18, 0x02	; 2
+ 590:	20 93 6a 00 	sts	0x006A, r18	; 0x80006a <ModBus>
+ 594:	cc cf       	rjmp	.-104    	; 0x52e <__vector_11+0x82>
+ 596:	20 91 6b 00 	lds	r18, 0x006B	; 0x80006b <ModBus+0x1>
+ 59a:	22 23       	and	r18, r18
+ 59c:	21 f0       	breq	.+8      	; 0x5a6 <__vector_11+0xfa>
+ 59e:	30 91 70 00 	lds	r19, 0x0070	; 0x800070 <ModBus+0x6>
+ 5a2:	23 17       	cp	r18, r19
+ 5a4:	f1 f2       	breq	.-68     	; 0x562 <__vector_11+0xb6>
+ 5a6:	23 e0       	ldi	r18, 0x03	; 3
+ 5a8:	20 93 6a 00 	sts	0x006A, r18	; 0x80006a <ModBus>
+ 5ac:	2f ef       	ldi	r18, 0xFF	; 255
+ 5ae:	30 e0       	ldi	r19, 0x00	; 0
+ 5b0:	30 93 6d 00 	sts	0x006D, r19	; 0x80006d <ModBus+0x3>
+ 5b4:	20 93 6c 00 	sts	0x006C, r18	; 0x80006c <ModBus+0x2>
+ 5b8:	bd cf       	rjmp	.-134    	; 0x534 <__vector_11+0x88>
+
+000005ba <__vector_13>:
+ 5ba:	1f 92       	push	r1
+ 5bc:	0f 92       	push	r0
+ 5be:	0f b6       	in	r0, 0x3f	; 63
+ 5c0:	0f 92       	push	r0
+ 5c2:	11 24       	eor	r1, r1
+ 5c4:	8f 93       	push	r24
+ 5c6:	9f 93       	push	r25
+ 5c8:	ef 93       	push	r30
+ 5ca:	ff 93       	push	r31
+ 5cc:	f8 94       	cli
+ 5ce:	56 98       	cbi	0x0a, 6	; 10
+ 5d0:	92 98       	cbi	0x12, 2	; 18
+ 5d2:	ea e6       	ldi	r30, 0x6A	; 106
+ 5d4:	f0 e0       	ldi	r31, 0x00	; 0
+ 5d6:	86 e0       	ldi	r24, 0x06	; 6
+ 5d8:	90 e0       	ldi	r25, 0x00	; 0
+ 5da:	93 83       	std	Z+3, r25	; 0x03
+ 5dc:	82 83       	std	Z+2, r24	; 0x02
+ 5de:	81 e0       	ldi	r24, 0x01	; 1
+ 5e0:	81 83       	std	Z+1, r24	; 0x01
+ 5e2:	10 82       	st	Z, r1
+ 5e4:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <ModBus+0x20c>
+ 5e8:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <ModBus+0x20b>
+ 5ec:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <ModBus+0x20e>
+ 5f0:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <ModBus+0x20d>
+ 5f4:	78 94       	sei
+ 5f6:	ff 91       	pop	r31
+ 5f8:	ef 91       	pop	r30
+ 5fa:	9f 91       	pop	r25
+ 5fc:	8f 91       	pop	r24
+ 5fe:	0f 90       	pop	r0
+ 600:	0f be       	out	0x3f, r0	; 63
+ 602:	0f 90       	pop	r0
+ 604:	1f 90       	pop	r1
+ 606:	18 95       	reti
+
+00000608 <__vector_12>:
+ 608:	1f 92       	push	r1
+ 60a:	0f 92       	push	r0
+ 60c:	0f b6       	in	r0, 0x3f	; 63
+ 60e:	0f 92       	push	r0
+ 610:	11 24       	eor	r1, r1
+ 612:	2f 93       	push	r18
+ 614:	3f 93       	push	r19
+ 616:	8f 93       	push	r24
+ 618:	9f 93       	push	r25
+ 61a:	ef 93       	push	r30
+ 61c:	ff 93       	push	r31
+ 61e:	f8 94       	cli
+ 620:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <ModBus+0x20d>
+ 624:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <ModBus+0x20e>
+ 628:	20 91 6e 00 	lds	r18, 0x006E	; 0x80006e <ModBus+0x4>
+ 62c:	30 91 6f 00 	lds	r19, 0x006F	; 0x80006f <ModBus+0x5>
+ 630:	21 50       	subi	r18, 0x01	; 1
+ 632:	31 09       	sbc	r19, r1
+ 634:	fc 01       	movw	r30, r24
+ 636:	e1 59       	subi	r30, 0x91	; 145
+ 638:	fe 4f       	sbci	r31, 0xFE	; 254
+ 63a:	82 17       	cp	r24, r18
+ 63c:	93 07       	cpc	r25, r19
+ 63e:	99 f0       	breq	.+38     	; 0x666 <__vector_12+0x5e>
+ 640:	20 81       	ld	r18, Z
+ 642:	2c b9       	out	0x0c, r18	; 12
+ 644:	01 96       	adiw	r24, 0x01	; 1
+ 646:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <ModBus+0x20e>
+ 64a:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <ModBus+0x20d>
+ 64e:	78 94       	sei
+ 650:	ff 91       	pop	r31
+ 652:	ef 91       	pop	r30
+ 654:	9f 91       	pop	r25
+ 656:	8f 91       	pop	r24
+ 658:	3f 91       	pop	r19
+ 65a:	2f 91       	pop	r18
+ 65c:	0f 90       	pop	r0
+ 65e:	0f be       	out	0x3f, r0	; 63
+ 660:	0f 90       	pop	r0
+ 662:	1f 90       	pop	r1
+ 664:	18 95       	reti
+ 666:	80 81       	ld	r24, Z
+ 668:	8c b9       	out	0x0c, r24	; 12
+ 66a:	55 98       	cbi	0x0a, 5	; 10
+ 66c:	56 9a       	sbi	0x0a, 6	; 10
+ 66e:	ef cf       	rjmp	.-34     	; 0x64e <__vector_12+0x46>
+
+00000670 <__vector_3>:
+ 670:	1f 92       	push	r1
+ 672:	0f 92       	push	r0
+ 674:	0f b6       	in	r0, 0x3f	; 63
+ 676:	0f 92       	push	r0
+ 678:	11 24       	eor	r1, r1
+ 67a:	2f 93       	push	r18
+ 67c:	3f 93       	push	r19
+ 67e:	8f 93       	push	r24
+ 680:	9f 93       	push	r25
+ 682:	ef 93       	push	r30
+ 684:	ff 93       	push	r31
+ 686:	f8 94       	cli
+ 688:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 68c:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 690:	20 91 68 00 	lds	r18, 0x0068	; 0x800068 <ModBusTimerInterval>
+ 694:	30 91 69 00 	lds	r19, 0x0069	; 0x800069 <ModBusTimerInterval+0x1>
+ 698:	82 17       	cp	r24, r18
+ 69a:	93 07       	cpc	r25, r19
+ 69c:	28 f4       	brcc	.+10     	; 0x6a8 <__vector_3+0x38>
+ 69e:	01 96       	adiw	r24, 0x01	; 1
+ 6a0:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6a4:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 6a8:	28 17       	cp	r18, r24
+ 6aa:	39 07       	cpc	r19, r25
+ 6ac:	61 f0       	breq	.+24     	; 0x6c6 <__vector_3+0x56>
+ 6ae:	78 94       	sei
+ 6b0:	ff 91       	pop	r31
+ 6b2:	ef 91       	pop	r30
+ 6b4:	9f 91       	pop	r25
+ 6b6:	8f 91       	pop	r24
+ 6b8:	3f 91       	pop	r19
+ 6ba:	2f 91       	pop	r18
+ 6bc:	0f 90       	pop	r0
+ 6be:	0f be       	out	0x3f, r0	; 63
+ 6c0:	0f 90       	pop	r0
+ 6c2:	1f 90       	pop	r1
+ 6c4:	18 95       	reti
+ 6c6:	2f 5f       	subi	r18, 0xFF	; 255
+ 6c8:	3f 4f       	sbci	r19, 0xFF	; 255
+ 6ca:	30 93 61 00 	sts	0x0061, r19	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6ce:	20 93 60 00 	sts	0x0060, r18	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 6d2:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <ModBus>
+ 6d6:	84 30       	cpi	r24, 0x04	; 4
+ 6d8:	d1 f0       	breq	.+52     	; 0x70e <__vector_3+0x9e>
+ 6da:	82 30       	cpi	r24, 0x02	; 2
+ 6dc:	10 f0       	brcs	.+4      	; 0x6e2 <__vector_3+0x72>
+ 6de:	83 30       	cpi	r24, 0x03	; 3
+ 6e0:	31 f7       	brne	.-52     	; 0x6ae <__vector_3+0x3e>
+ 6e2:	92 98       	cbi	0x12, 2	; 18
+ 6e4:	86 e0       	ldi	r24, 0x06	; 6
+ 6e6:	90 e0       	ldi	r25, 0x00	; 0
+ 6e8:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <ModBus+0x3>
+ 6ec:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <ModBus+0x2>
+ 6f0:	81 e0       	ldi	r24, 0x01	; 1
+ 6f2:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <ModBus+0x1>
+ 6f6:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <ModBus>
+ 6fa:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <ModBus+0x20c>
+ 6fe:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <ModBus+0x20b>
+ 702:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <ModBus+0x20e>
+ 706:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <ModBus+0x20d>
+ 70a:	15 bc       	out	0x25, r1	; 37
+ 70c:	d0 cf       	rjmp	.-96     	; 0x6ae <__vector_3+0x3e>
+ 70e:	92 9a       	sbi	0x12, 2	; 18
+ 710:	85 e0       	ldi	r24, 0x05	; 5
+ 712:	80 93 6a 00 	sts	0x006A, r24	; 0x80006a <ModBus>
+ 716:	15 bc       	out	0x25, r1	; 37
+ 718:	80 91 77 02 	lds	r24, 0x0277	; 0x800277 <ModBus+0x20d>
+ 71c:	90 91 78 02 	lds	r25, 0x0278	; 0x800278 <ModBus+0x20e>
+ 720:	fc 01       	movw	r30, r24
+ 722:	e1 59       	subi	r30, 0x91	; 145
+ 724:	fe 4f       	sbci	r31, 0xFE	; 254
+ 726:	20 81       	ld	r18, Z
+ 728:	2c b9       	out	0x0c, r18	; 12
+ 72a:	55 9a       	sbi	0x0a, 5	; 10
+ 72c:	01 96       	adiw	r24, 0x01	; 1
+ 72e:	90 93 78 02 	sts	0x0278, r25	; 0x800278 <ModBus+0x20e>
+ 732:	80 93 77 02 	sts	0x0277, r24	; 0x800277 <ModBus+0x20d>
+ 736:	80 91 6a 00 	lds	r24, 0x006A	; 0x80006a <ModBus>
+ 73a:	cf cf       	rjmp	.-98     	; 0x6da <__vector_3+0x6a>
+
+0000073c <__vector_14>:
+// o que restringe bastante a frequência de operação. Além disso, o ADC consome 13 ciclos para fazer a medição,
+// o que implica na frequência de amostragem máxima de 200/13 = 15,38kHz (medindo apenas um canal).
+// E acima de tudo isso, não existe um meio para medir continuamente varios canais, temos de tratar isso no 
+// codigo da interupção, o que torna a frequencia de amostragem variavel com o codigo gravado no processador.
+ISR(ADC_vect)
+{
+ 73c:	1f 92       	push	r1
+ 73e:	0f 92       	push	r0
+ 740:	0f b6       	in	r0, 0x3f	; 63
+ 742:	0f 92       	push	r0
+ 744:	11 24       	eor	r1, r1
+ 746:	ef 92       	push	r14
+ 748:	ff 92       	push	r15
+ 74a:	0f 93       	push	r16
+ 74c:	1f 93       	push	r17
+ 74e:	2f 93       	push	r18
+ 750:	3f 93       	push	r19
+ 752:	4f 93       	push	r20
+ 754:	5f 93       	push	r21
+ 756:	6f 93       	push	r22
+ 758:	7f 93       	push	r23
+ 75a:	8f 93       	push	r24
+ 75c:	9f 93       	push	r25
+ 75e:	af 93       	push	r26
+ 760:	bf 93       	push	r27
+ 762:	ef 93       	push	r30
+ 764:	ff 93       	push	r31
+	cli();
+ 766:	f8 94       	cli
+	// fs = 4.54kHz, T = 220us (medido experimentalmente com o osciloscópio)
+	uint32_t adc = ADCW;
+ 768:	24 b1       	in	r18, 0x04	; 4
+ 76a:	35 b1       	in	r19, 0x05	; 5
+	
+	// Le próximo canal
+	ADMUX ^= (1<<MUX0);
+ 76c:	97 b1       	in	r25, 0x07	; 7
+ 76e:	81 e0       	ldi	r24, 0x01	; 1
+ 770:	89 27       	eor	r24, r25
+ 772:	87 b9       	out	0x07, r24	; 7
+	ADCSRA |= (1<<ADSC);
+ 774:	36 9a       	sbi	0x06, 6	; 6
+	
+	if (ADMUX & (1<<MUX0)) {
+ 776:	38 9b       	sbis	0x07, 0	; 7
+ 778:	7c c0       	rjmp	.+248    	; 0x872 <__vector_14+0x136>
+		const int32_t current32 = (CURRENT_GAIN * (int32_t)adc + CURRENT_OFFSET)/1000;
+ 77a:	af e1       	ldi	r26, 0x1F	; 31
+ 77c:	b5 e0       	ldi	r27, 0x05	; 5
+ 77e:	0d d2       	rcall	.+1050   	; 0xb9a <__umulhisi3>
+ 780:	66 59       	subi	r22, 0x96	; 150
+ 782:	71 4b       	sbci	r23, 0xB1	; 177
+ 784:	81 09       	sbc	r24, r1
+ 786:	91 09       	sbc	r25, r1
+ 788:	28 ee       	ldi	r18, 0xE8	; 232
+ 78a:	33 e0       	ldi	r19, 0x03	; 3
+ 78c:	40 e0       	ldi	r20, 0x00	; 0
+ 78e:	50 e0       	ldi	r21, 0x00	; 0
+ 790:	e8 d1       	rcall	.+976    	; 0xb62 <__divmodsi4>
+		current = current32 > 0 ? (uint16_t)(current32) : 0;
+ 792:	12 16       	cp	r1, r18
+ 794:	13 06       	cpc	r1, r19
+ 796:	14 06       	cpc	r1, r20
+ 798:	15 06       	cpc	r1, r21
+ 79a:	0c f0       	brlt	.+2      	; 0x79e <__vector_14+0x62>
+ 79c:	b1 c0       	rjmp	.+354    	; 0x900 <__vector_14+0x1c4>
+ 79e:	30 93 65 00 	sts	0x0065, r19	; 0x800065 <current+0x1>
+ 7a2:	20 93 64 00 	sts	0x0064, r18	; 0x800064 <current>
+	return (uint16_t)(pi->controlSignal/1000);
+}
+
+static inline void controle(void) {
+	// operando com setpoint enviado pela entrada analógica
+	if (ModBus.end_modbus == 0) {
+ 7a6:	80 91 6b 00 	lds	r24, 0x006B	; 0x80006b <ModBus+0x1>
+ 7aa:	81 11       	cpse	r24, r1
+ 7ac:	16 c0       	rjmp	.+44     	; 0x7da <__vector_14+0x9e>
+		if (analog_input < ANALOG_INPUT_MIN) {
+ 7ae:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <analog_input>
+ 7b2:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <analog_input+0x1>
+ 7b6:	88 3c       	cpi	r24, 0xC8	; 200
+ 7b8:	91 05       	cpc	r25, r1
+ 7ba:	08 f4       	brcc	.+2      	; 0x7be <__vector_14+0x82>
+ 7bc:	91 c0       	rjmp	.+290    	; 0x8e0 <__vector_14+0x1a4>
+			setpoint  = 0;
+		} else if (analog_input > ANALOG_INPUT_MAX) {
+ 7be:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <analog_input>
+ 7c2:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <analog_input+0x1>
+ 7c6:	89 3e       	cpi	r24, 0xE9	; 233
+ 7c8:	93 40       	sbci	r25, 0x03	; 3
+ 7ca:	08 f4       	brcc	.+2      	; 0x7ce <__vector_14+0x92>
+ 7cc:	9c c0       	rjmp	.+312    	; 0x906 <__vector_14+0x1ca>
+			setpoint = SETPOINT_MAX;
+ 7ce:	88 ee       	ldi	r24, 0xE8	; 232
+ 7d0:	93 e0       	ldi	r25, 0x03	; 3
+ 7d2:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <__data_end+0x1>
+ 7d6:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+			setpoint = (uint16_t) (sp32/((uint32_t)(ANALOG_INPUT_MAX - ANALOG_INPUT_MIN)));
+		}
+	}
+	
+	#if CLOSED_LOOP
+		OCR1A = piControl(&piCurrent, setpoint, current);
+ 7da:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <current>
+ 7de:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <current+0x1>
+ 7e2:	20 91 62 00 	lds	r18, 0x0062	; 0x800062 <__data_end>
+ 7e6:	30 91 63 00 	lds	r19, 0x0063	; 0x800063 <__data_end+0x1>
+
+struct PI piCurrent;
+
+uint16_t piControl(struct PI *pi, uint16_t setPoint, uint16_t feedBack)
+{
+	int16_t error = setPoint - feedBack;
+ 7ea:	28 1b       	sub	r18, r24
+ 7ec:	39 0b       	sbc	r19, r25
+	pi->controlSignal += GAIN_K1 * error - GAIN_K2 * pi->previousError;
+ 7ee:	80 91 79 02 	lds	r24, 0x0279	; 0x800279 <piCurrent>
+ 7f2:	90 91 7a 02 	lds	r25, 0x027A	; 0x80027a <piCurrent+0x1>
+ 7f6:	42 e4       	ldi	r20, 0x42	; 66
+ 7f8:	48 9f       	mul	r20, r24
+ 7fa:	b0 01       	movw	r22, r0
+ 7fc:	49 9f       	mul	r20, r25
+ 7fe:	70 0d       	add	r23, r0
+ 800:	78 1b       	sub	r23, r24
+ 802:	11 24       	eor	r1, r1
+ 804:	48 ec       	ldi	r20, 0xC8	; 200
+ 806:	42 9f       	mul	r20, r18
+ 808:	c0 01       	movw	r24, r0
+ 80a:	43 9f       	mul	r20, r19
+ 80c:	90 0d       	add	r25, r0
+ 80e:	11 24       	eor	r1, r1
+ 810:	86 0f       	add	r24, r22
+ 812:	97 1f       	adc	r25, r23
+ 814:	09 2e       	mov	r0, r25
+ 816:	00 0c       	add	r0, r0
+ 818:	aa 0b       	sbc	r26, r26
+ 81a:	bb 0b       	sbc	r27, r27
+ 81c:	40 91 7b 02 	lds	r20, 0x027B	; 0x80027b <piCurrent+0x2>
+ 820:	50 91 7c 02 	lds	r21, 0x027C	; 0x80027c <piCurrent+0x3>
+ 824:	60 91 7d 02 	lds	r22, 0x027D	; 0x80027d <piCurrent+0x4>
+ 828:	70 91 7e 02 	lds	r23, 0x027E	; 0x80027e <piCurrent+0x5>
+ 82c:	7c 01       	movw	r14, r24
+ 82e:	8d 01       	movw	r16, r26
+ 830:	e4 0e       	add	r14, r20
+ 832:	f5 1e       	adc	r15, r21
+ 834:	06 1f       	adc	r16, r22
+ 836:	17 1f       	adc	r17, r23
+ 838:	c8 01       	movw	r24, r16
+ 83a:	b7 01       	movw	r22, r14
+ 83c:	e0 92 7b 02 	sts	0x027B, r14	; 0x80027b <piCurrent+0x2>
+ 840:	f0 92 7c 02 	sts	0x027C, r15	; 0x80027c <piCurrent+0x3>
+ 844:	00 93 7d 02 	sts	0x027D, r16	; 0x80027d <piCurrent+0x4>
+ 848:	10 93 7e 02 	sts	0x027E, r17	; 0x80027e <piCurrent+0x5>
+	pi->previousError = error;
+ 84c:	30 93 7a 02 	sts	0x027A, r19	; 0x80027a <piCurrent+0x1>
+ 850:	20 93 79 02 	sts	0x0279, r18	; 0x800279 <piCurrent>
+	
+	if (pi->controlSignal >= (int32_t)PWM_LIMIT*1000) {
+ 854:	60 32       	cpi	r22, 0x20	; 32
+ 856:	0f eb       	ldi	r16, 0xBF	; 191
+ 858:	70 07       	cpc	r23, r16
+ 85a:	02 e0       	ldi	r16, 0x02	; 2
+ 85c:	80 07       	cpc	r24, r16
+ 85e:	91 05       	cpc	r25, r1
+ 860:	74 f5       	brge	.+92     	; 0x8be <__vector_14+0x182>
+		pi->controlSignal = (int32_t)PWM_LIMIT*1000;
+	} else if (pi->controlSignal < 0) {
+ 862:	97 fd       	sbrc	r25, 7
+ 864:	42 c0       	rjmp	.+132    	; 0x8ea <__vector_14+0x1ae>
+ 866:	28 ee       	ldi	r18, 0xE8	; 232
+ 868:	33 e0       	ldi	r19, 0x03	; 3
+ 86a:	40 e0       	ldi	r20, 0x00	; 0
+ 86c:	50 e0       	ldi	r21, 0x00	; 0
+ 86e:	79 d1       	rcall	.+754    	; 0xb62 <__divmodsi4>
+ 870:	34 c0       	rjmp	.+104    	; 0x8da <__vector_14+0x19e>
+	if (ADMUX & (1<<MUX0)) {
+		const int32_t current32 = (CURRENT_GAIN * (int32_t)adc + CURRENT_OFFSET)/1000;
+		current = current32 > 0 ? (uint16_t)(current32) : 0;
+		controle();
+	} else {
+		analog_input = (uint16_t)((ANALOG_INPUT_GAIN * (uint32_t)adc + ANALOG_INPUT_OFFSET)/1000);
+ 872:	a2 e3       	ldi	r26, 0x32	; 50
+ 874:	b4 e0       	ldi	r27, 0x04	; 4
+ 876:	91 d1       	rcall	.+802    	; 0xb9a <__umulhisi3>
+ 878:	67 54       	subi	r22, 0x47	; 71
+ 87a:	71 4f       	sbci	r23, 0xF1	; 241
+ 87c:	8f 4f       	sbci	r24, 0xFF	; 255
+ 87e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 880:	28 ee       	ldi	r18, 0xE8	; 232
+ 882:	33 e0       	ldi	r19, 0x03	; 3
+ 884:	40 e0       	ldi	r20, 0x00	; 0
+ 886:	50 e0       	ldi	r21, 0x00	; 0
+ 888:	4a d1       	rcall	.+660    	; 0xb1e <__udivmodsi4>
+ 88a:	30 93 67 00 	sts	0x0067, r19	; 0x800067 <analog_input+0x1>
+ 88e:	20 93 66 00 	sts	0x0066, r18	; 0x800066 <analog_input>
+	}
+	sei();
+ 892:	78 94       	sei
+}
+ 894:	ff 91       	pop	r31
+ 896:	ef 91       	pop	r30
+ 898:	bf 91       	pop	r27
+ 89a:	af 91       	pop	r26
+ 89c:	9f 91       	pop	r25
+ 89e:	8f 91       	pop	r24
+ 8a0:	7f 91       	pop	r23
+ 8a2:	6f 91       	pop	r22
+ 8a4:	5f 91       	pop	r21
+ 8a6:	4f 91       	pop	r20
+ 8a8:	3f 91       	pop	r19
+ 8aa:	2f 91       	pop	r18
+ 8ac:	1f 91       	pop	r17
+ 8ae:	0f 91       	pop	r16
+ 8b0:	ff 90       	pop	r15
+ 8b2:	ef 90       	pop	r14
+ 8b4:	0f 90       	pop	r0
+ 8b6:	0f be       	out	0x3f, r0	; 63
+ 8b8:	0f 90       	pop	r0
+ 8ba:	1f 90       	pop	r1
+ 8bc:	18 95       	reti
+	int16_t error = setPoint - feedBack;
+	pi->controlSignal += GAIN_K1 * error - GAIN_K2 * pi->previousError;
+	pi->previousError = error;
+	
+	if (pi->controlSignal >= (int32_t)PWM_LIMIT*1000) {
+		pi->controlSignal = (int32_t)PWM_LIMIT*1000;
+ 8be:	80 e2       	ldi	r24, 0x20	; 32
+ 8c0:	9f eb       	ldi	r25, 0xBF	; 191
+ 8c2:	a2 e0       	ldi	r26, 0x02	; 2
+ 8c4:	b0 e0       	ldi	r27, 0x00	; 0
+ 8c6:	80 93 7b 02 	sts	0x027B, r24	; 0x80027b <piCurrent+0x2>
+ 8ca:	90 93 7c 02 	sts	0x027C, r25	; 0x80027c <piCurrent+0x3>
+ 8ce:	a0 93 7d 02 	sts	0x027D, r26	; 0x80027d <piCurrent+0x4>
+ 8d2:	b0 93 7e 02 	sts	0x027E, r27	; 0x80027e <piCurrent+0x5>
+ 8d6:	24 eb       	ldi	r18, 0xB4	; 180
+ 8d8:	30 e0       	ldi	r19, 0x00	; 0
+			setpoint = (uint16_t) (sp32/((uint32_t)(ANALOG_INPUT_MAX - ANALOG_INPUT_MIN)));
+		}
+	}
+	
+	#if CLOSED_LOOP
+		OCR1A = piControl(&piCurrent, setpoint, current);
+ 8da:	3b bd       	out	0x2b, r19	; 43
+ 8dc:	2a bd       	out	0x2a, r18	; 42
+ 8de:	d9 cf       	rjmp	.-78     	; 0x892 <__vector_14+0x156>
+
+static inline void controle(void) {
+	// operando com setpoint enviado pela entrada analógica
+	if (ModBus.end_modbus == 0) {
+		if (analog_input < ANALOG_INPUT_MIN) {
+			setpoint  = 0;
+ 8e0:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__data_end+0x1>
+ 8e4:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__data_end>
+ 8e8:	78 cf       	rjmp	.-272    	; 0x7da <__vector_14+0x9e>
+	pi->previousError = error;
+	
+	if (pi->controlSignal >= (int32_t)PWM_LIMIT*1000) {
+		pi->controlSignal = (int32_t)PWM_LIMIT*1000;
+	} else if (pi->controlSignal < 0) {
+		pi->controlSignal = 0;
+ 8ea:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <piCurrent+0x2>
+ 8ee:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <piCurrent+0x3>
+ 8f2:	10 92 7d 02 	sts	0x027D, r1	; 0x80027d <piCurrent+0x4>
+ 8f6:	10 92 7e 02 	sts	0x027E, r1	; 0x80027e <piCurrent+0x5>
+ 8fa:	20 e0       	ldi	r18, 0x00	; 0
+ 8fc:	30 e0       	ldi	r19, 0x00	; 0
+ 8fe:	ed cf       	rjmp	.-38     	; 0x8da <__vector_14+0x19e>
+	ADMUX ^= (1<<MUX0);
+	ADCSRA |= (1<<ADSC);
+	
+	if (ADMUX & (1<<MUX0)) {
+		const int32_t current32 = (CURRENT_GAIN * (int32_t)adc + CURRENT_OFFSET)/1000;
+		current = current32 > 0 ? (uint16_t)(current32) : 0;
+ 900:	20 e0       	ldi	r18, 0x00	; 0
+ 902:	30 e0       	ldi	r19, 0x00	; 0
+ 904:	4c cf       	rjmp	.-360    	; 0x79e <__vector_14+0x62>
+		if (analog_input < ANALOG_INPUT_MIN) {
+			setpoint  = 0;
+		} else if (analog_input > ANALOG_INPUT_MAX) {
+			setpoint = SETPOINT_MAX;
+		} else {
+			uint32_t sp32 = ((uint32_t)SETPOINT_MAX)*((uint32_t)(analog_input - ANALOG_INPUT_MIN));
+ 906:	20 91 66 00 	lds	r18, 0x0066	; 0x800066 <analog_input>
+ 90a:	30 91 67 00 	lds	r19, 0x0067	; 0x800067 <analog_input+0x1>
+ 90e:	28 5c       	subi	r18, 0xC8	; 200
+ 910:	31 09       	sbc	r19, r1
+			setpoint = (uint16_t) (sp32/((uint32_t)(ANALOG_INPUT_MAX - ANALOG_INPUT_MIN)));
+ 912:	a8 ee       	ldi	r26, 0xE8	; 232
+ 914:	b3 e0       	ldi	r27, 0x03	; 3
+ 916:	41 d1       	rcall	.+642    	; 0xb9a <__umulhisi3>
+ 918:	20 e2       	ldi	r18, 0x20	; 32
+ 91a:	33 e0       	ldi	r19, 0x03	; 3
+ 91c:	40 e0       	ldi	r20, 0x00	; 0
+ 91e:	50 e0       	ldi	r21, 0x00	; 0
+ 920:	fe d0       	rcall	.+508    	; 0xb1e <__udivmodsi4>
+ 922:	30 93 63 00 	sts	0x0063, r19	; 0x800063 <__data_end+0x1>
+ 926:	20 93 62 00 	sts	0x0062, r18	; 0x800062 <__data_end>
+ 92a:	57 cf       	rjmp	.-338    	; 0x7da <__vector_14+0x9e>
+
+0000092c <main>:
+
+//-------------------------------------------------------------------------------------------------------
+int main(void)
+{
+	// Leds
+	DDRC |= (1<<DDC4) | (1<<DDC5);
+ 92c:	84 b3       	in	r24, 0x14	; 20
+ 92e:	80 63       	ori	r24, 0x30	; 48
+ 930:	84 bb       	out	0x14, r24	; 20
+	// Dip Switch - Liga os resistores de pull-up
+	PORTD |= (1<<PD7)|(1<<PD6)|(1<<PD5);
+ 932:	82 b3       	in	r24, 0x12	; 18
+ 934:	80 6e       	ori	r24, 0xE0	; 224
+ 936:	82 bb       	out	0x12, r24	; 18
+	PORTB |= (1<<PB0);
+ 938:	c0 9a       	sbi	0x18, 0	; 24
+	
+	//-----------------------------------
+	// ADC - Entradas Analógicas
+	// Frequencia de Amostragem = 4.8kHz (medição de dois canais em sequência)
+	ADMUX = (1<<REFS0);
+ 93a:	80 e4       	ldi	r24, 0x40	; 64
+ 93c:	87 b9       	out	0x07, r24	; 7
+	// Prescaler = /128, conversion cycles = 13, f = 9.6kHz, T = 200us
+	ADCSRA = (1<<ADEN)|(1<<ADIE)|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);
+ 93e:	8f e8       	ldi	r24, 0x8F	; 143
+ 940:	86 b9       	out	0x06, r24	; 6
+	// Inicia nova conversão
+	ADCSRA |= (1<<ADSC);
+ 942:	36 9a       	sbi	0x06, 6	; 6
+
+	//-----------------------------------
+	// Timer 1 - PWM
+	PORTB |= (1<<PB1);
+ 944:	c1 9a       	sbi	0x18, 1	; 24
+	TCNT1 = 0;
+ 946:	1d bc       	out	0x2d, r1	; 45
+ 948:	1c bc       	out	0x2c, r1	; 44
+	OCR1A = 0;
+ 94a:	1b bc       	out	0x2b, r1	; 43
+ 94c:	1a bc       	out	0x2a, r1	; 42
+	ICR1 = PWM_MAX; // Freq = 10kHz
+ 94e:	80 e2       	ldi	r24, 0x20	; 32
+ 950:	93 e0       	ldi	r25, 0x03	; 3
+ 952:	97 bd       	out	0x27, r25	; 39
+ 954:	86 bd       	out	0x26, r24	; 38
+	TCCR1A = (1 << COM1A1)|(1 << COM1A0)|(1 << WGM11); // Set OC1A on Compare Match and clear at BOTTOM
+ 956:	82 ec       	ldi	r24, 0xC2	; 194
+ 958:	8f bd       	out	0x2f, r24	; 47
+	TCCR1B = (1 << WGM13)|(1 << WGM12)|(1 << CS10); // Mode 14, Fast PWM, overflow on ICR1, set prescaler to 1
+ 95a:	89 e1       	ldi	r24, 0x19	; 25
+ 95c:	8e bd       	out	0x2e, r24	; 46
+	DDRB |= (1<<DDB1);
+ 95e:	b9 9a       	sbi	0x17, 1	; 23
+}
+
+//	Inicializa a comunicaÃ§Ã£o serial
+void usart_init()
+{
+	UCSRB = (1<<RXEN)|(1<<TXEN); // Turn on the transmission and reception circuitry
+ 960:	88 e1       	ldi	r24, 0x18	; 24
+ 962:	8a b9       	out	0x0a, r24	; 10
+	UCSRC = (1<<USBS)|(1<<UCSZ1)|(3<<UCSZ0);
+ 964:	8e e0       	ldi	r24, 0x0E	; 14
+ 966:	80 bd       	out	0x20, r24	; 32
+	UBRRL = BAUD_PRESCALE; // Load lower 8-bits of the baud rate value into the low byte of the UBRR register
+ 968:	83 e3       	ldi	r24, 0x33	; 51
+ 96a:	89 b9       	out	0x09, r24	; 9
+	UBRRH = (BAUD_PRESCALE >> 8); // Load upper 8-bits of the baud rate value into the high byte of the UBRR register
+ 96c:	10 bc       	out	0x20, r1	; 32
+	
+	UCSRB |= (1 << RXCIE); // Enable the USART Recieve Complete interrupt (USART_RXC)
+ 96e:	57 9a       	sbi	0x0a, 7	; 10
+
+	ModBusTxEnableDDR |= (1<<ModBusTxEnablePin); // Habilita TX do driver RS485 como saÃ­da
+ 970:	8a 9a       	sbi	0x11, 2	; 17
+	ModBusRxEnable(); // Habilita a recepÃ§Ã£o do driver RS485
+ 972:	92 98       	cbi	0x12, 2	; 18
+	return crc;
+}
+
+void ModBusReset()
+{
+	ModBusRxEnable();
+ 974:	92 98       	cbi	0x12, 2	; 18
+	ModBus.rxsize=6;
+ 976:	86 e0       	ldi	r24, 0x06	; 6
+ 978:	90 e0       	ldi	r25, 0x00	; 0
+ 97a:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <ModBus+0x3>
+ 97e:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <ModBus+0x2>
+	ModBus.end_modbus=endereco_modbus;
+ 982:	81 e0       	ldi	r24, 0x01	; 1
+ 984:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <ModBus+0x1>
+	ModBus.status=aguardando;
+ 988:	10 92 6a 00 	sts	0x006A, r1	; 0x80006a <ModBus>
+	ModBus.rxpt=0;
+ 98c:	10 92 76 02 	sts	0x0276, r1	; 0x800276 <ModBus+0x20c>
+ 990:	10 92 75 02 	sts	0x0275, r1	; 0x800275 <ModBus+0x20b>
+	ModBus.txpt=0;
+ 994:	10 92 78 02 	sts	0x0278, r1	; 0x800278 <ModBus+0x20e>
+ 998:	10 92 77 02 	sts	0x0277, r1	; 0x800277 <ModBus+0x20d>
+	int16_t previousError;
+	int32_t controlSignal;
+};
+
+void piClear(struct PI *pi) {
+	pi->previousError = 0;
+ 99c:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <piCurrent+0x1>
+ 9a0:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <piCurrent>
+	pi->controlSignal = 0;
+ 9a4:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <piCurrent+0x2>
+ 9a8:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <piCurrent+0x3>
+ 9ac:	10 92 7d 02 	sts	0x027D, r1	; 0x80027d <piCurrent+0x4>
+ 9b0:	10 92 7e 02 	sts	0x027E, r1	; 0x80027e <piCurrent+0x5>
+	
+	// Inicializa variaveis internas do controlador
+	piClear(&piCurrent);
+	
+	// Enable interrupts
+	sei();
+ 9b4:	78 94       	sei
+	uint32_t counter = 0;
+	
+	// Main loop
+	while (1)
+	{
+		counter++;
+ 9b6:	81 2c       	mov	r8, r1
+ 9b8:	91 2c       	mov	r9, r1
+ 9ba:	54 01       	movw	r10, r8
+ 9bc:	83 94       	inc	r8
+ 9be:	60 91 6b 00 	lds	r22, 0x006B	; 0x80006b <ModBus+0x1>
+			counter = 0;
+			TOOGLE_GREEN_LED();
+		}
+		
+		if (ModBus.status == aguardando || ModBus.end_modbus == 0) {
+			uint8_t novo_endereco = dip_switch();
+ 9c2:	dd 24       	eor	r13, r13
+ 9c4:	d3 94       	inc	r13
+			ModBus.data_reg[0] = analog_input;
+			ModBus.data_reg[1] = current;
+			if (ModBus.data_reg[2] < SETPOINT_MAX) {
+				setpoint = ModBus.data_reg[2];
+			} else {
+				setpoint = SETPOINT_MAX;
+ 9c6:	a8 ee       	ldi	r26, 0xE8	; 232
+ 9c8:	ea 2e       	mov	r14, r26
+ 9ca:	a3 e0       	ldi	r26, 0x03	; 3
+ 9cc:	fa 2e       	mov	r15, r26
+	while (1)
+	{
+		counter++;
+		if (counter >= 50000) {
+			counter = 0;
+			TOOGLE_GREEN_LED();
+ 9ce:	b0 e1       	ldi	r27, 0x10	; 16
+ 9d0:	cb 2e       	mov	r12, r27
+		}
+		
+		if (ModBus.status == aguardando || ModBus.end_modbus == 0) {
+ 9d2:	70 91 6a 00 	lds	r23, 0x006A	; 0x80006a <ModBus>
+ 9d6:	77 23       	and	r23, r23
+ 9d8:	f1 f1       	breq	.+124    	; 0xa56 <main+0x12a>
+ 9da:	66 23       	and	r22, r22
+ 9dc:	e1 f1       	breq	.+120    	; 0xa56 <main+0x12a>
+				ModBus.end_modbus = novo_endereco;
+			}
+		}
+		
+		if (ModBus.end_modbus != 0)	{
+			if (ModBus.status == processando) {
+ 9de:	72 30       	cpi	r23, 0x02	; 2
+ 9e0:	09 f4       	brne	.+2      	; 0x9e4 <main+0xb8>
+ 9e2:	9b c0       	rjmp	.+310    	; 0xb1a <main+0x1ee>
+				ModBusProcess(); // inicia o processamento do pacote
+			}
+			ModBus.data_reg[0] = analog_input;
+ 9e4:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <analog_input>
+ 9e8:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <analog_input+0x1>
+ 9ec:	90 93 70 02 	sts	0x0270, r25	; 0x800270 <ModBus+0x206>
+ 9f0:	80 93 6f 02 	sts	0x026F, r24	; 0x80026f <ModBus+0x205>
+			ModBus.data_reg[1] = current;
+ 9f4:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <current>
+ 9f8:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <current+0x1>
+ 9fc:	90 93 72 02 	sts	0x0272, r25	; 0x800272 <ModBus+0x208>
+ a00:	80 93 71 02 	sts	0x0271, r24	; 0x800271 <ModBus+0x207>
+			if (ModBus.data_reg[2] < SETPOINT_MAX) {
+ a04:	80 91 73 02 	lds	r24, 0x0273	; 0x800273 <ModBus+0x209>
+ a08:	90 91 74 02 	lds	r25, 0x0274	; 0x800274 <ModBus+0x20a>
+ a0c:	88 3e       	cpi	r24, 0xE8	; 232
+ a0e:	23 e0       	ldi	r18, 0x03	; 3
+ a10:	92 07       	cpc	r25, r18
+ a12:	08 f0       	brcs	.+2      	; 0xa16 <main+0xea>
+ a14:	7d c0       	rjmp	.+250    	; 0xb10 <main+0x1e4>
+				setpoint = ModBus.data_reg[2];
+ a16:	90 93 63 00 	sts	0x0063, r25	; 0x800063 <__data_end+0x1>
+ a1a:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <__data_end>
+			} else {
+				setpoint = SETPOINT_MAX;
+			}
+		}
+		
+		if ((ModBus.end_modbus == 0) && (analog_input < ANALOG_INPUT_TOO_LOW)) {
+ a1e:	60 91 6b 00 	lds	r22, 0x006B	; 0x80006b <ModBus+0x1>
+ a22:	66 23       	and	r22, r22
+ a24:	09 f4       	brne	.+2      	; 0xa28 <main+0xfc>
+ a26:	6a c0       	rjmp	.+212    	; 0xafc <main+0x1d0>
+			// liga led vermelho para indicar que a entrada analógica está recebendo menos de 4mA
+			SET_RED_LED();
+		} else {
+			CLEAR_RED_LED();
+ a28:	ad 98       	cbi	0x15, 5	; 21
+	uint32_t counter = 0;
+	
+	// Main loop
+	while (1)
+	{
+		counter++;
+ a2a:	2f ef       	ldi	r18, 0xFF	; 255
+ a2c:	82 1a       	sub	r8, r18
+ a2e:	92 0a       	sbc	r9, r18
+ a30:	a2 0a       	sbc	r10, r18
+ a32:	b2 0a       	sbc	r11, r18
+		if (counter >= 50000) {
+ a34:	80 e5       	ldi	r24, 0x50	; 80
+ a36:	88 16       	cp	r8, r24
+ a38:	83 ec       	ldi	r24, 0xC3	; 195
+ a3a:	98 06       	cpc	r9, r24
+ a3c:	a1 04       	cpc	r10, r1
+ a3e:	b1 04       	cpc	r11, r1
+ a40:	41 f6       	brne	.-112    	; 0x9d2 <main+0xa6>
+			counter = 0;
+			TOOGLE_GREEN_LED();
+ a42:	85 b3       	in	r24, 0x15	; 21
+ a44:	8c 25       	eor	r24, r12
+ a46:	85 bb       	out	0x15, r24	; 21
+	// Main loop
+	while (1)
+	{
+		counter++;
+		if (counter >= 50000) {
+			counter = 0;
+ a48:	81 2c       	mov	r8, r1
+ a4a:	91 2c       	mov	r9, r1
+ a4c:	54 01       	movw	r10, r8
+			TOOGLE_GREEN_LED();
+		}
+		
+		if (ModBus.status == aguardando || ModBus.end_modbus == 0) {
+ a4e:	70 91 6a 00 	lds	r23, 0x006A	; 0x80006a <ModBus>
+ a52:	71 11       	cpse	r23, r1
+ a54:	c2 cf       	rjmp	.-124    	; 0x9da <main+0xae>
+		OCR1A = setpoint;
+	#endif
+}
+
+static inline uint16_t dip_switch(void) {
+	const uint16_t bit0 = (PIND&(1<<PD5)) ? 0:1;
+ a56:	30 b3       	in	r19, 0x10	; 16
+	const uint16_t bit1 = (PIND&(1<<PD6)) ? 0:1;
+ a58:	90 b3       	in	r25, 0x10	; 16
+	const uint16_t bit2 = (PIND&(1<<PD7)) ? 0:1;
+ a5a:	80 b3       	in	r24, 0x10	; 16
+	const uint16_t bit3 = (PINB&(1<<PB0)) ? 0:1;
+ a5c:	26 b3       	in	r18, 0x16	; 22
+			counter = 0;
+			TOOGLE_GREEN_LED();
+		}
+		
+		if (ModBus.status == aguardando || ModBus.end_modbus == 0) {
+			uint8_t novo_endereco = dip_switch();
+ a5e:	92 95       	swap	r25
+ a60:	96 95       	lsr	r25
+ a62:	96 95       	lsr	r25
+ a64:	93 70       	andi	r25, 0x03	; 3
+ a66:	9d 25       	eor	r25, r13
+ a68:	91 70       	andi	r25, 0x01	; 1
+ a6a:	c9 2f       	mov	r28, r25
+ a6c:	90 e0       	ldi	r25, 0x00	; 0
+ a6e:	d9 2f       	mov	r29, r25
+ a70:	fe 01       	movw	r30, r28
+ a72:	ee 0f       	add	r30, r30
+ a74:	ff 1f       	adc	r31, r31
+ a76:	08 2e       	mov	r0, r24
+ a78:	00 0c       	add	r0, r0
+ a7a:	99 0b       	sbc	r25, r25
+ a7c:	80 95       	com	r24
+ a7e:	90 95       	com	r25
+ a80:	88 27       	eor	r24, r24
+ a82:	99 0f       	add	r25, r25
+ a84:	88 1f       	adc	r24, r24
+ a86:	99 27       	eor	r25, r25
+ a88:	88 0f       	add	r24, r24
+ a8a:	99 1f       	adc	r25, r25
+ a8c:	88 0f       	add	r24, r24
+ a8e:	99 1f       	adc	r25, r25
+ a90:	af 01       	movw	r20, r30
+ a92:	48 2b       	or	r20, r24
+ a94:	59 2b       	or	r21, r25
+ a96:	93 2f       	mov	r25, r19
+ a98:	92 95       	swap	r25
+ a9a:	96 95       	lsr	r25
+ a9c:	97 70       	andi	r25, 0x07	; 7
+ a9e:	9d 25       	eor	r25, r13
+ aa0:	09 2f       	mov	r16, r25
+ aa2:	01 70       	andi	r16, 0x01	; 1
+ aa4:	10 e0       	ldi	r17, 0x00	; 0
+ aa6:	ca 01       	movw	r24, r20
+ aa8:	80 2b       	or	r24, r16
+ aaa:	91 2b       	or	r25, r17
+ aac:	21 70       	andi	r18, 0x01	; 1
+ aae:	2d 25       	eor	r18, r13
+ ab0:	30 e0       	ldi	r19, 0x00	; 0
+ ab2:	22 0f       	add	r18, r18
+ ab4:	33 1f       	adc	r19, r19
+ ab6:	22 0f       	add	r18, r18
+ ab8:	33 1f       	adc	r19, r19
+ aba:	22 0f       	add	r18, r18
+ abc:	33 1f       	adc	r19, r19
+ abe:	82 2b       	or	r24, r18
+ ac0:	93 2b       	or	r25, r19
+ ac2:	28 2f       	mov	r18, r24
+			if (ModBus.end_modbus != novo_endereco) {
+ ac4:	86 17       	cp	r24, r22
+ ac6:	b1 f0       	breq	.+44     	; 0xaf4 <main+0x1c8>
+				setpoint = 0; // reseta o setpoint para desligar o sistema
+ ac8:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <__data_end+0x1>
+ acc:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <__data_end>
+	int16_t previousError;
+	int32_t controlSignal;
+};
+
+void piClear(struct PI *pi) {
+	pi->previousError = 0;
+ ad0:	10 92 7a 02 	sts	0x027A, r1	; 0x80027a <piCurrent+0x1>
+ ad4:	10 92 79 02 	sts	0x0279, r1	; 0x800279 <piCurrent>
+	pi->controlSignal = 0;
+ ad8:	10 92 7b 02 	sts	0x027B, r1	; 0x80027b <piCurrent+0x2>
+ adc:	10 92 7c 02 	sts	0x027C, r1	; 0x80027c <piCurrent+0x3>
+ ae0:	10 92 7d 02 	sts	0x027D, r1	; 0x80027d <piCurrent+0x4>
+ ae4:	10 92 7e 02 	sts	0x027E, r1	; 0x80027e <piCurrent+0x5>
+		if (ModBus.status == aguardando || ModBus.end_modbus == 0) {
+			uint8_t novo_endereco = dip_switch();
+			if (ModBus.end_modbus != novo_endereco) {
+				setpoint = 0; // reseta o setpoint para desligar o sistema
+				piClear(&piCurrent);
+				ModBus.data_reg[2] = 0;
+ ae8:	10 92 74 02 	sts	0x0274, r1	; 0x800274 <ModBus+0x20a>
+ aec:	10 92 73 02 	sts	0x0273, r1	; 0x800273 <ModBus+0x209>
+				ModBus.end_modbus = novo_endereco;
+ af0:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <ModBus+0x1>
+			}
+		}
+		
+		if (ModBus.end_modbus != 0)	{
+ af4:	21 11       	cpse	r18, r1
+ af6:	73 cf       	rjmp	.-282    	; 0x9de <main+0xb2>
+ af8:	60 91 6b 00 	lds	r22, 0x006B	; 0x80006b <ModBus+0x1>
+			} else {
+				setpoint = SETPOINT_MAX;
+			}
+		}
+		
+		if ((ModBus.end_modbus == 0) && (analog_input < ANALOG_INPUT_TOO_LOW)) {
+ afc:	80 91 66 00 	lds	r24, 0x0066	; 0x800066 <analog_input>
+ b00:	90 91 67 00 	lds	r25, 0x0067	; 0x800067 <analog_input+0x1>
+ b04:	86 39       	cpi	r24, 0x96	; 150
+ b06:	91 05       	cpc	r25, r1
+ b08:	08 f0       	brcs	.+2      	; 0xb0c <main+0x1e0>
+ b0a:	8e cf       	rjmp	.-228    	; 0xa28 <main+0xfc>
+			// liga led vermelho para indicar que a entrada analógica está recebendo menos de 4mA
+			SET_RED_LED();
+ b0c:	ad 9a       	sbi	0x15, 5	; 21
+ b0e:	8d cf       	rjmp	.-230    	; 0xa2a <main+0xfe>
+			ModBus.data_reg[0] = analog_input;
+			ModBus.data_reg[1] = current;
+			if (ModBus.data_reg[2] < SETPOINT_MAX) {
+				setpoint = ModBus.data_reg[2];
+			} else {
+				setpoint = SETPOINT_MAX;
+ b10:	f0 92 63 00 	sts	0x0063, r15	; 0x800063 <__data_end+0x1>
+ b14:	e0 92 62 00 	sts	0x0062, r14	; 0x800062 <__data_end>
+ b18:	82 cf       	rjmp	.-252    	; 0xa1e <main+0xf2>
+			}
+		}
+		
+		if (ModBus.end_modbus != 0)	{
+			if (ModBus.status == processando) {
+				ModBusProcess(); // inicia o processamento do pacote
+ b1a:	2c db       	rcall	.-2472   	; 0x174 <ModBusProcess>
+ b1c:	63 cf       	rjmp	.-314    	; 0x9e4 <main+0xb8>
+
+00000b1e <__udivmodsi4>:
+ b1e:	a1 e2       	ldi	r26, 0x21	; 33
+ b20:	1a 2e       	mov	r1, r26
+ b22:	aa 1b       	sub	r26, r26
+ b24:	bb 1b       	sub	r27, r27
+ b26:	fd 01       	movw	r30, r26
+ b28:	0d c0       	rjmp	.+26     	; 0xb44 <__udivmodsi4_ep>
+
+00000b2a <__udivmodsi4_loop>:
+ b2a:	aa 1f       	adc	r26, r26
+ b2c:	bb 1f       	adc	r27, r27
+ b2e:	ee 1f       	adc	r30, r30
+ b30:	ff 1f       	adc	r31, r31
+ b32:	a2 17       	cp	r26, r18
+ b34:	b3 07       	cpc	r27, r19
+ b36:	e4 07       	cpc	r30, r20
+ b38:	f5 07       	cpc	r31, r21
+ b3a:	20 f0       	brcs	.+8      	; 0xb44 <__udivmodsi4_ep>
+ b3c:	a2 1b       	sub	r26, r18
+ b3e:	b3 0b       	sbc	r27, r19
+ b40:	e4 0b       	sbc	r30, r20
+ b42:	f5 0b       	sbc	r31, r21
+
+00000b44 <__udivmodsi4_ep>:
+ b44:	66 1f       	adc	r22, r22
+ b46:	77 1f       	adc	r23, r23
+ b48:	88 1f       	adc	r24, r24
+ b4a:	99 1f       	adc	r25, r25
+ b4c:	1a 94       	dec	r1
+ b4e:	69 f7       	brne	.-38     	; 0xb2a <__udivmodsi4_loop>
+ b50:	60 95       	com	r22
+ b52:	70 95       	com	r23
+ b54:	80 95       	com	r24
+ b56:	90 95       	com	r25
+ b58:	9b 01       	movw	r18, r22
+ b5a:	ac 01       	movw	r20, r24
+ b5c:	bd 01       	movw	r22, r26
+ b5e:	cf 01       	movw	r24, r30
+ b60:	08 95       	ret
+
+00000b62 <__divmodsi4>:
+ b62:	05 2e       	mov	r0, r21
+ b64:	97 fb       	bst	r25, 7
+ b66:	16 f4       	brtc	.+4      	; 0xb6c <__divmodsi4+0xa>
+ b68:	00 94       	com	r0
+ b6a:	0f d0       	rcall	.+30     	; 0xb8a <__negsi2>
+ b6c:	57 fd       	sbrc	r21, 7
+ b6e:	05 d0       	rcall	.+10     	; 0xb7a <__divmodsi4_neg2>
+ b70:	d6 df       	rcall	.-84     	; 0xb1e <__udivmodsi4>
+ b72:	07 fc       	sbrc	r0, 7
+ b74:	02 d0       	rcall	.+4      	; 0xb7a <__divmodsi4_neg2>
+ b76:	46 f4       	brtc	.+16     	; 0xb88 <__divmodsi4_exit>
+ b78:	08 c0       	rjmp	.+16     	; 0xb8a <__negsi2>
+
+00000b7a <__divmodsi4_neg2>:
+ b7a:	50 95       	com	r21
+ b7c:	40 95       	com	r20
+ b7e:	30 95       	com	r19
+ b80:	21 95       	neg	r18
+ b82:	3f 4f       	sbci	r19, 0xFF	; 255
+ b84:	4f 4f       	sbci	r20, 0xFF	; 255
+ b86:	5f 4f       	sbci	r21, 0xFF	; 255
+
+00000b88 <__divmodsi4_exit>:
+ b88:	08 95       	ret
+
+00000b8a <__negsi2>:
+ b8a:	90 95       	com	r25
+ b8c:	80 95       	com	r24
+ b8e:	70 95       	com	r23
+ b90:	61 95       	neg	r22
+ b92:	7f 4f       	sbci	r23, 0xFF	; 255
+ b94:	8f 4f       	sbci	r24, 0xFF	; 255
+ b96:	9f 4f       	sbci	r25, 0xFF	; 255
+ b98:	08 95       	ret
+
+00000b9a <__umulhisi3>:
+ b9a:	a2 9f       	mul	r26, r18
+ b9c:	b0 01       	movw	r22, r0
+ b9e:	b3 9f       	mul	r27, r19
+ ba0:	c0 01       	movw	r24, r0
+ ba2:	a3 9f       	mul	r26, r19
+ ba4:	01 d0       	rcall	.+2      	; 0xba8 <__umulhisi3+0xe>
+ ba6:	b2 9f       	mul	r27, r18
+ ba8:	70 0d       	add	r23, r0
+ baa:	81 1d       	adc	r24, r1
+ bac:	11 24       	eor	r1, r1
+ bae:	91 1d       	adc	r25, r1
+ bb0:	08 95       	ret
+
+00000bb2 <_exit>:
+ bb2:	f8 94       	cli
+
+00000bb4 <__stop_program>:
+ bb4:	ff cf       	rjmp	.-2      	; 0xbb4 <__stop_program>
